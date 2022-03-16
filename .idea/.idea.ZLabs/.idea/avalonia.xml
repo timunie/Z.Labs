@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="ZLabs/App.axaml" value="ZLabs/ZLabs.csproj" />
+        <entry key="ZLabs/Resources/Fonts.axaml" value="ZLabs/ZLabs.csproj" />
+        <entry key="ZLabs/Resources/Styles/MainWindow.axaml" value="ZLabs/ZLabs.csproj" />
+        <entry key="ZLabs/Views/MainWindow.axaml" value="ZLabs/ZLabs.csproj" />
+        <entry key="ZLabs/Views/TestControl.axaml" value="ZLabs/ZLabs.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
