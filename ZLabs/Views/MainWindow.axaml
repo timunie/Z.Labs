@@ -6,6 +6,8 @@
         xmlns:views="clr-namespace:ZLabs.Views"
         xmlns:helpers="clr-namespace:ZLabs.Helpers"
         xmlns:models="clr-namespace:ZLabs.Models"
+        xmlns:controls="clr-namespace:ZLabs.Controls"
+        xmlns:avaloniaColorPicker="clr-namespace:AvaloniaColorPicker;assembly=AvaloniaColorPicker"
         mc:Ignorable="d" d:DesignWidth="1366" d:DesignHeight="720"
         MinHeight="720" MinWidth="1366" Height="720" Width="1366"
         x:Class="ZLabs.Views.MainWindow"
@@ -24,7 +26,7 @@
         <DataTemplate x:Key="ListItemTemplate" DataType="models:SidebarElement">
             <Border>
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="{Binding ImagePath, Converter={StaticResource VariableImage}}"/>
+                    <Image Source="{Binding ImagePath, Converter={StaticResource VariableImage}}" />
                     <Label Content="{Binding Name}" />
                 </StackPanel>
             </Border>
@@ -97,6 +99,60 @@
                 <Grid.Background>
                     <ImageBrush Source="/Assets/Img/MainWindow.png" />
                 </Grid.Background>
+                <TabControl Classes="HideTabs">
+                    <TabControl.DataTemplates>
+                        <DataTemplate DataType="models:Sensor">
+                            <Grid RowDefinitions="Auto,Auto,Auto,*,Auto">
+                                <Grid Grid.Row="0" Margin="0 15 0 0" ColumnDefinitions="*,Auto">
+                                    <Label Grid.Column="0" Content="{Binding Name}" FontSize="30"
+                                           FontFamily="{StaticResource MontserratBold}" Background="Transparent"
+                                           VerticalContentAlignment="Center" Padding="70 0 0 0" />
+                                    <Image Grid.Column="1" Height="150" Width="173"
+                                           Source="{Binding ImagePath, Converter={StaticResource VariableImage}}"
+                                           VerticalAlignment="Top" HorizontalAlignment="Right" Margin="30 0" />
+                                </Grid>
+                                <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0 0 0 2" Margin="30 0 30 0">
+                                    <Label Content="Настройки датчика" FontSize="21" HorizontalAlignment="Center"
+                                           FontFamily="{StaticResource MontserratRegular}" Margin="0 0 0 7" />
+                                </Border>
+                                <Grid Grid.Row="2">
+                                    <ItemsRepeater Items="{Binding Settings}" Margin="40">
+                                        <ItemsRepeater.Styles>
+                                            <Style Selector="Grid">
+                                                <Setter Property="Margin" Value="0 10 0 0"/>
+                                            </Style>
+                                        </ItemsRepeater.Styles>
+                                        <ItemsRepeater.Styles>
+                                            <Style Selector="TextBlock">
+                                                <Setter Property="FontSize" Value="18" />
+                                                <Setter Property="Foreground" Value="Black" />
+                                                <Setter Property="FontFamily"
+                                                        Value="{StaticResource MontserratRegular}" />
+                                            </Style>
+                                        </ItemsRepeater.Styles>
+                                        <ItemsRepeater.ItemTemplate>
+                                            <DataTemplate DataType="models:SensorSetting">
+                                                <Grid ColumnDefinitions="350,Auto,*">
+                                                    <TextBlock Grid.Column="0" Text="{Binding StringFormat={}{0}:, Path=Label}" VerticalAlignment="Bottom" />
+                                                    <ContentControl Grid.Column="1" Content="{Binding Selector}" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsRepeater.ItemTemplate>
+                                    </ItemsRepeater>
+                                </Grid>
+                                <Button HorizontalAlignment="Center" Grid.Row="4" Height="40" Width="180"
+                                        Content="Пуск" FontSize="20"
+                                        Margin="0 0 0 10" />
+                            </Grid>
+                        </DataTemplate>
+                    </TabControl.DataTemplates>
+                    <TabItem>
+                        <models:Sensor Name="Test" ImagePath="/Assets/Img/Logging.png">
+                         
+                        </models:Sensor>
+                    </TabItem>
+                </TabControl>
+
             </Grid>
 
         </Grid>

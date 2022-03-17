@@ -17,8 +17,6 @@ namespace ZLabs.ViewModels
     {
         public ObservableCollection<SidebarElement> Sensors { get; }
 
-        public string Greeting => "Welcome to Avalonia!";
-
         public MainWindowViewModel()
         {
             var sensors = Enumerable.Range(1, 10)

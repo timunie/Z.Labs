@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Markup.Xaml;
 
 namespace ZLabs.Views
 {
@@ -7,6 +8,12 @@ namespace ZLabs.Views
         public MainWindow()
         {
             InitializeComponent();
+        }
+        
+        private void InitializeComponent()
+        {
+            AvaloniaXamlLoader.Load(this);
+
         }
     }
 }
