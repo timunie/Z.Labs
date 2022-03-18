@@ -1,6 +1,7 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="using:ZLabs"
+             xmlns:helpers="clr-namespace:ZLabs.Helpers"
              x:Class="ZLabs.App">
     <Application.DataTemplates>
         <local:ViewLocator/>
@@ -8,6 +9,8 @@
 
    <Application.Resources >
        <ResourceDictionary>
+           <helpers:BitmapAssetValueConverter x:Key="VariableImage" />
+
            <ResourceDictionary.MergedDictionaries>
                <ResourceInclude Source="/Resources/Fonts.axaml" />
            </ResourceDictionary.MergedDictionaries>

@@ -9,21 +9,31 @@ using System.Text;
 using Avalonia;
 using Avalonia.Platform;
 using DynamicData.Binding;
+using HardwareLib.Classes;
+using ReactiveUI;
 using ZLabs.Models;
 
 namespace ZLabs.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public ObservableCollection<SidebarElement> Sensors { get; }
+        private IPage _selectedPage;
+
+        public ObservableCollection<Sensor> Sensors { get; }
+
+        public IPage SelectedPage
+        {
+            get => _selectedPage;
+            set => this.RaiseAndSetIfChanged(ref _selectedPage, value);
+        }
 
         public MainWindowViewModel()
         {
-            var sensors = Enumerable.Range(1, 10)
-                .Select(i =>
-                    new SidebarElement("testName", "/Assets/Img/Sensors/Pressure.png")
-                );
-            Sensors = new ObservableCollection<SidebarElement>(sensors);
+            var sensors = Enum.GetValues(typeof(SensorType)).Cast<SensorType>().Select(type =>
+            {
+                return SensorFabric.GetSensor(type);
+            });
+            Sensors = new ObservableCollection<Sensor>(sensors);
         }
     }
 }

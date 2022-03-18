@@ -13,7 +13,6 @@ namespace ZLabs.Views
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
-
         }
     }
 }
