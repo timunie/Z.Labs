@@ -57,6 +57,39 @@
        <Setter Property="IsVisible" Value="False"></Setter>
    </Style>
     
+    
+    <!-- Стиль шапки вкладки датчики -->
+    <Style Selector=".SensorsHeader Label">
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="FontFamily" Value="{StaticResource MontserratBold}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="70 0 0 0" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    
+    
+    <!-- Стили шапки поиска доступных устройств -->
+    <Style Selector=".SensorsScanHeader > Border">
+        <Setter Property="BorderBrush" Value="Black"/> 
+        <Setter Property="BorderThickness" Value="0 0 0 2"/>
+    </Style>
+    <Style Selector=".SensorsScanHeader > Border > StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/> 
+        <Setter Property="Margin" Value="0 0 0 15"/>
+    </Style>
+    <Style Selector=".SensorsScanHeader > Border > StackPanel > Label">
+        <Setter Property="FontSize" Value="21"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"/>
+    </Style>
+    <Style Selector="Button">
+        <Setter Property="Height" Value="40"/> 
+        <Setter Property="Width" Value="180"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="65 0 0 0"/>
+    </Style>
+    
+    
      <!--Cтиль для Button (синие кнопки)-->
     <Style Selector="Button">
         <Setter Property="Background" Value="#3AB8FF"/>

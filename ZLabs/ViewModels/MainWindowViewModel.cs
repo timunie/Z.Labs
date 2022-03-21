@@ -24,7 +24,12 @@ namespace ZLabs.ViewModels
         public IPage? SelectedPage
         {
             get => _selectedPage;
-            set => this.RaiseAndSetIfChanged(ref _selectedPage, value);
+            set
+            {
+                if (value == null)
+                    return;
+                this.RaiseAndSetIfChanged(ref _selectedPage, value);
+            }
         }
 
         public MainWindowViewModel()

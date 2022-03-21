@@ -29,6 +29,15 @@
                 </StackPanel>
             </Border>
         </DataTemplate>
+        <DataTemplate x:Key="ListItemBigTemplate" DataType="models:IPage">
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Assets/Img/Compass.png" Height="65" Width="75" Margin="14 0 8 0" />
+                    <Label Content="Датчики" VerticalContentAlignment="Center" FontSize="20"
+                           FontFamily="{StaticResource MontserratBold}" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
     </Window.Resources>
 
 
@@ -46,16 +55,11 @@
                 <Image Grid.Row="0" Source="/Assets/Img/logo.png" Width="133" Height="18" Margin="0 25 0 20" />
 
                 <!--Датчики -->
-                <ListBox Grid.Row="1" Margin="0 0 0 15" Classes="Sidebar">
-                    <ListBoxItem>
-                        <Border>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="/Assets/Img/Compass.png" Height="65" Width="75" Margin="14 0 8 0" />
-                                <Label Content="Датчики" VerticalContentAlignment="Center" FontSize="20"
-                                       FontFamily="{StaticResource MontserratBold}" />
-                            </StackPanel>
-                        </Border>
-                    </ListBoxItem>
+                <ListBox Grid.Row="1" SelectedItem="{Binding SelectedPage}" VirtualizationMode="None"
+                         ItemTemplate="{StaticResource ListItemBigTemplate}" Margin="0 0 0 15" Classes="Sidebar">
+                    <ListBox.Items>
+                        <vm:SensorPanelViewModel />
+                    </ListBox.Items>
                 </ListBox>
 
                 <!--Список датчиков -->
@@ -97,13 +101,15 @@
                 <Grid.Background>
                     <ImageBrush Source="/Assets/Img/MainWindow.png" />
                 </Grid.Background>
-                <TabControl Classes="HideTabs" >
-                    <TabControl.DataTemplates >
+                <TabControl Classes="HideTabs">
+                    <TabControl.DataTemplates>
+                        <DataTemplate DataType="vm:SensorPanelViewModel">
+                            <views:SensorsPanel />
+                        </DataTemplate>
                         <DataTemplate DataType="vm:SensorViewModel">
-                            <views:SensorPlotSettings/>
+                            <views:SensorPlotSettings />
                         </DataTemplate>
                     </TabControl.DataTemplates>
-      
                     <TabItem>
                         <ContentControl Content="{Binding SelectedPage}"></ContentControl>
                     </TabItem>

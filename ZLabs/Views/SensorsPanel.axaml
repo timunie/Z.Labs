@@ -1,0 +1,94 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:ZLabs.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="996" d:DesignHeight="720"
+             x:Class="ZLabs.Views.SensorsPanel">
+    <Design.DataContext>
+        <vm:SensorPanelViewModel/>
+    </Design.DataContext>
+    <UserControl.Styles>
+        <StyleInclude Source="/Resources/Styles/MainWindow.axaml" />
+    </UserControl.Styles>
+    <Grid RowDefinitions="Auto,Auto,*,Auto, *" ShowGridLines="True">
+        
+        <!-- Шапка -->
+        <Grid Grid.Row="0" Margin="0 15 0 10" ColumnDefinitions="*,Auto,Auto" Classes="SensorsHeader">
+            <Label Grid.Column="0" Content="Датчики"  />
+            <Border Grid.Column="1" Margin="0 0 40 0">
+                <StackPanel Orientation="Horizontal">
+                    <ToggleButton Content="USB" IsChecked="{Binding !IsBluetoothTab}"/>
+                    <ToggleButton Content="Bluetooth" IsChecked="{Binding IsBluetoothTab}" />
+                </StackPanel>
+            </Border>
+            <Image Grid.Column="2" Height="150" Width="173" Source="/Assets/Img/Compass.png"
+                   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="30 0" />
+        </Grid>
+        
+        <!-- Скан устройств -->
+        <Grid Grid.Row="1" RowDefinitions="Auto,*" Classes="SensorsScanHeader">
+            <Border Grid.Row="0" Margin="30 0 30 0">
+                <StackPanel >
+                    <Label Content="Доступные устройства:"  />
+                    <Button  Content="Обновить"  />
+                </StackPanel>
+            </Border>
+        </Grid>
+        
+        <TabControl Grid.Row="2" SelectedIndex="1" Background="Transparent" Classes="HideTabs">
+            <!--Область работы с датчиками по USB-->
+            <TabItem>
+                
+            </TabItem>
+            <!--Область работы с датчиками по Bluetooth-->
+            <TabItem>
+                <Grid RowDefinitions="200,Auto,*">
+                    <Grid Grid.Row="0" RowDefinitions="Auto,*">
+                        <ItemsRepeater Grid.Row="1"  Margin="33,5,33,5"
+                                       Background="Transparent">
+                            <ItemsRepeater.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Width="300" TextAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   FontFamily="{StaticResource MontserratRegular}"
+                                                   FontSize="16" Text="{Binding DeviceName}" />
+                                        <TextBlock Width="150" TextAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   FontFamily="{StaticResource MontserratRegular}"
+                                                   FontSize="16" Text="{Binding rssi}" />
+                                        <Button Margin="52,0,0,0" Name="ConnectBLEBut"
+                                               Height="40" Width="180" Content="Подключиться" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsRepeater.ItemTemplate>
+                        </ItemsRepeater>
+                    </Grid>
+
+                    
+                    
+                    <!-- <DockPanel Grid.Row="0" Grid.Column="0" Margin="0 0 20 0"> -->
+                    <!--     <Image DockPanel.Dock="Left" -->
+                    <!--            Source="Img/Sensors/Accelerometr.png" -->
+                    <!--            Style="{StaticResource Icon_img}" /> -->
+                    <!--     <Label Content="Датчик ускорения. Ось Х" -->
+                    <!--            Style="{StaticResource Label_LB}" /> -->
+                    <!-- </DockPanel> -->
+                </Grid>
+            </TabItem>
+        </TabControl>
+        
+        <!-- Подключенные датчики -->
+        <Grid Grid.Row="3" RowDefinitions="Auto,*"  Classes="SensorsScanHeader">
+            <Border Grid.Row="0" Padding="0 10">
+                <Label Content="Подключенные датчики:" FontSize="21"
+                       VerticalContentAlignment="Top" HorizontalAlignment="Center"
+                       FontFamily="{StaticResource MontserratRegular}" />
+            </Border>
+        </Grid>
+        <ItemsRepeater Grid.Row="4">
+            
+        </ItemsRepeater>
+    </Grid>
+</UserControl>

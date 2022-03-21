@@ -17,6 +17,7 @@
         <entry key="ZLabs/Views/MainWindow.axaml" value="ZLabs/ZLabs.csproj" />
         <entry key="ZLabs/Views/SensorPlotSettings.axaml" value="ZLabs/ZLabs.csproj" />
         <entry key="ZLabs/Views/Sensors.axaml" value="ZLabs/ZLabs.csproj" />
+        <entry key="ZLabs/Views/SensorsPanel.axaml" value="ZLabs/ZLabs.csproj" />
         <entry key="ZLabs/Views/TestControl.axaml" value="ZLabs/ZLabs.csproj" />
       </map>
     </option>
