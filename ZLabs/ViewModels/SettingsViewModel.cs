@@ -5,8 +5,8 @@ namespace ZLabs.ViewModels;
 
 public class SettingsViewModel : IPage
 {
-    string IPage.Name => "Настройки";
-    string IPage.ImagePath => "/Assets/Img/Gear.png";
+   public string Name => "Настройки";
+   public string ImagePath => "/Assets/Img/Gear.png";
 
     public ChartFormatListBoxItem SelectedChartFormatItem
     {

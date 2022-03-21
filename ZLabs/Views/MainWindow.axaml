@@ -32,8 +32,8 @@
         <DataTemplate x:Key="ListItemBigTemplate" DataType="models:IPage">
             <Border>
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/Assets/Img/Compass.png" Height="65" Width="75" Margin="14 0 8 0" />
-                    <Label Content="Датчики" VerticalContentAlignment="Center" FontSize="20"
+                    <Image Source="{Binding ImagePath, Converter={StaticResource VariableImage}}" Height="65" Width="75" Margin="14 0 8 0" />
+                    <Label Content="{Binding Name}" VerticalContentAlignment="Center" FontSize="20"
                            FontFamily="{StaticResource MontserratBold}" />
                 </StackPanel>
             </Border>
