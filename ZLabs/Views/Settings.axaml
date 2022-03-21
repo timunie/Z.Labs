@@ -1,0 +1,73 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:ZLabs.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ZLabs.Views.Settings">
+    <Design.DataContext>
+        <viewModels:SettingsViewModel />
+    </Design.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="0 15 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Настройки" FontSize="30"
+                   FontFamily="{StaticResource MontserratBold}" Background="Transparent"
+                   VerticalContentAlignment="Center" Padding="70 0 0 0" />
+            <Image Grid.Column="0" Height="150" Width="173" Source="/Assets/Img/Gear.png" VerticalAlignment="Top"
+                   HorizontalAlignment="Right" Margin="30 0" />
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Время эксперимента:" FontSize="20"
+                   HorizontalAlignment="Left" FontFamily="{StaticResource MontserratRegular}"
+                   Margin="50 50 0 0" />
+            <Label Grid.Row="1" Grid.Column="0" Content="Формат времени:" FontSize="20"
+                   HorizontalAlignment="Left" FontFamily="{StaticResource MontserratRegular}"
+                   Margin="50 0 0 0" />
+            <Label Grid.Row="2" Grid.Column="0" Content="Вид графика:" FontSize="20"
+                   HorizontalAlignment="Left" FontFamily="{StaticResource MontserratRegular}"
+                   Margin="50 0 0 0" />
+
+            <DockPanel Grid.Row="0" Grid.Column="1" Margin="100 50 0 3" Width="250">
+                <NumericUpDown Value="{Binding ExperimentTime}" Increment="0.1" FormatString="F1" FontSize="18"
+                               Width="120" Margin="0" Minimum="0" />
+                <ComboBox Items="{Binding TimeUnits}" 
+                          SelectedItem="{Binding SelectedTimeUnit}"
+                          SelectedIndex="0" 
+                          FontSize="18" FontFamily="{StaticResource MontserratRegular}" Margin="5 0 0 0" />
+            </DockPanel>
+
+            <ComboBox Items="{Binding TimeFormats}" Grid.Row="1" Grid.Column="1" SelectedIndex="0" FontSize="18"
+                      SelectedItem="{Binding SelectedTimeFormatItem}"
+                      FontFamily="{StaticResource MontserratRegular}" Margin="100 0 0 3"
+                      Width="250" />
+
+            <ComboBox Items="{Binding ChartFormats}" Grid.Row="2" Grid.Column="1" SelectedIndex="0" FontSize="18"
+                      SelectedItem="{Binding SelectedChartFormatItem}"
+                      FontFamily="{StaticResource MontserratRegular}" Margin="100 0 0 3"
+                      Width="250" />
+
+        </Grid>
+    </Grid>
+</UserControl>

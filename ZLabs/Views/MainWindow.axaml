@@ -68,17 +68,10 @@
 
 
                 <!--Настройки -->
-                <ListBox Grid.Row="3" Margin="0 10 0 0" Classes="Sidebar">
-                    <ListBoxItem>
-                        <Border>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="/Assets/Img/Gear.png" Height="65" Width="75"
-                                       Margin="14 0 8 0" />
-                                <Label Content="Настройки" VerticalContentAlignment="Center" FontSize="20"
-                                       FontFamily="{StaticResource MontserratBold}" />
-                            </StackPanel>
-                        </Border>
-                    </ListBoxItem>
+                <ListBox Grid.Row="3" SelectedItem="{Binding SelectedPage}" Margin="0 10 0 0" Classes="Sidebar" ItemTemplate="{StaticResource ListItemBigTemplate}">
+                    <ListBox.Items>
+                        <vm:SettingsViewModel/>
+                    </ListBox.Items>  
                 </ListBox>
 
                 <ListBox Grid.Row="4" ItemTemplate="{StaticResource ListItemTemplate}" Margin="0 12 0 0"
@@ -108,6 +101,9 @@
                         </DataTemplate>
                         <DataTemplate DataType="vm:SensorViewModel">
                             <views:SensorPlotSettings />
+                        </DataTemplate>
+                        <DataTemplate DataType="vm:SettingsViewModel">
+                            <views:Settings />
                         </DataTemplate>
                     </TabControl.DataTemplates>
                     <TabItem>
