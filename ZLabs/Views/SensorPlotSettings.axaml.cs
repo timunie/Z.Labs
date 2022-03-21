@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace ZLabs.Views;
 
-public partial class TestControl : UserControl
+public partial class SensorPlotSettings : UserControl
 {
-    public TestControl()
+    public SensorPlotSettings()
     {
         InitializeComponent();
     }

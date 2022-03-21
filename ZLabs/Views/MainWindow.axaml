@@ -98,15 +98,10 @@
                     <ImageBrush Source="/Assets/Img/MainWindow.png" />
                 </Grid.Background>
                 <TabControl Classes="HideTabs" >
-                    <TabControl.Resources>
-                        <ResourceDictionary>
-                            <ResourceDictionary.MergedDictionaries>
-                                <ResourceInclude Source="/Resources/Templates/SensorPlotSettings.axaml" />
-                            </ResourceDictionary.MergedDictionaries>
-                        </ResourceDictionary>
-                    </TabControl.Resources>
                     <TabControl.DataTemplates >
-                        <StaticResource ResourceKey="SensorTemplate"></StaticResource>
+                        <DataTemplate DataType="vm:SensorViewModel">
+                            <views:SensorPlotSettings/>
+                        </DataTemplate>
                     </TabControl.DataTemplates>
       
                     <TabItem>

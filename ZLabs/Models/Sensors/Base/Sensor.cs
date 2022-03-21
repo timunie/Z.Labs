@@ -13,12 +13,17 @@ namespace ZLabs.Models;
 
 public class Sensor : IPage
 {
-    public readonly AvaPlot Plot = new AvaPlot();
+    // public readonly AvaPlot Plot = new AvaPlot();
 
-    public string Name { get; set; }
-    public string ImagePath { get; set; }
+    // Отображаемое имя датчика
+    public string Name { get; }
+    
+    // Путь до картинки в формате "/Assets/Path/To/Image.png"
+    public string ImagePath { get; }
+    // Набор настроек датчика и его графика
     public ObservableCollection<SensorSetting> Settings { get; set; } = new();
 
+    // Таймер опроса датчика
     protected readonly DispatcherTimer _timer = new();
     protected int _markerSize = 2;
     protected Color _markerColor = Colors.Red;
@@ -33,7 +38,7 @@ public class Sensor : IPage
         AddDefaultSettings();
     }
 
-    private static readonly Dictionary<string, int> periods = new()
+    private static readonly Dictionary<string, int> Periods = new()
     {
         {"4 точек/сек.", 250},
         {"2 точек/сек.", 500},
@@ -45,15 +50,16 @@ public class Sensor : IPage
         {"1 точка/час", 3600000},
     };
 
+    // Стандартные настройки для графика
     protected void AddDefaultSettings()
     {
         var periodComboBox = new ComboBox()
         {
-            Items = periods.Keys
+            Items = Periods.Keys
         };
         periodComboBox.SelectionChanged += (_, _) =>
         {
-            var period = periods.ElementAt(periodComboBox.SelectedIndex).Value;
+            var period = Periods.ElementAt(periodComboBox.SelectedIndex).Value;
             _timer.Interval = TimeSpan.FromMilliseconds(period);
         };
         periodComboBox.SelectedIndex = 0;
@@ -101,6 +107,7 @@ public class Sensor : IPage
     }
 
 
+    // Функционал добавления выбора диапазона отображения графиков 
     private SensorSetting? _rangeUnitSetting;
     public Sensor AddRanges(ICollection<PlotRange?> ranges, int startIndex = 0,
         int positionIndex = 0)
@@ -129,11 +136,16 @@ public class Sensor : IPage
     }
 }
 
+// Диапазон отображаемых данных на графике 
 public struct PlotRange
 {
+    // Минимальное значениче в указанных ед. измерения
     public double Min;
+    // Максимсальное значениче в указанных ед. измерения
     public double Max;
+    // отображаемая ед. измерения
     public string Unit;
+    // Функция конвертации едениц измерения
     private Func<double, double> Converter;
 
     public PlotRange(double min, double max, string unit, double unitMultiplier = 1,
@@ -147,8 +159,10 @@ public struct PlotRange
         Converter = converter;
     }
 
+    // Функция конвертации едениц измерения
     public double Convert(double val) => Converter(val);
 
+    // Строковое представление диапазона с защитой от Null
     public static string ToString(PlotRange? nullableRange)
     {
         if (nullableRange is { } range)
@@ -157,6 +171,7 @@ public struct PlotRange
     }
 }
 
+// Одна настройка датчика (нужно для представления, не хранит данные)
 public class SensorSetting
 {
     public SensorSetting(string label, Control selector)
@@ -164,7 +179,9 @@ public class SensorSetting
         Label = label;
         Selector = selector;
     }
-
+    
+    // Наименование настройки
     public string Label { get; set; }
+    // Представление настройки (как ее можно изменить)
     public Control Selector { get; set; }
 }

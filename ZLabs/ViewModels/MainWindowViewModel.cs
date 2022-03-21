@@ -17,11 +17,11 @@ namespace ZLabs.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private IPage _selectedPage;
+        private IPage? _selectedPage;
 
-        public ObservableCollection<Sensor> Sensors { get; }
+        public ObservableCollection<SensorViewModel> Sensors { get; }
 
-        public IPage SelectedPage
+        public IPage? SelectedPage
         {
             get => _selectedPage;
             set => this.RaiseAndSetIfChanged(ref _selectedPage, value);
@@ -29,11 +29,12 @@ namespace ZLabs.ViewModels
 
         public MainWindowViewModel()
         {
-            var sensors = Enum.GetValues(typeof(SensorType)).Cast<SensorType>().Select(type =>
-            {
-                return SensorFabric.GetSensor(type);
-            });
-            Sensors = new ObservableCollection<Sensor>(sensors);
+            var sensors = 
+                Enum.GetValues(typeof(SensorType))
+                .Cast<SensorType>()
+                .Select(type => new SensorViewModel(SensorFabric.GetSensor(type)));
+            
+            Sensors = new ObservableCollection<SensorViewModel>(sensors);
         }
     }
 }
