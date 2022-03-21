@@ -7,6 +7,7 @@
         <entry key="ZLabs/Controls/ColorPicker.axaml" value="ZLabs/ZLabs.csproj" />
         <entry key="ZLabs/Controls/ComboBox10.axaml" value="ZLabs/ZLabs.csproj" />
         <entry key="ZLabs/Controls/ComboBoxRangeInt.axaml" value="ZLabs/ZLabs.csproj" />
+        <entry key="ZLabs/Controls/Hyperlink.axaml" value="ZLabs/ZLabs.csproj" />
         <entry key="ZLabs/Controls/SettingControl.axaml" value="ZLabs/ZLabs.csproj" />
         <entry key="ZLabs/Controls/SimpleColorPicker.axaml" value="ZLabs/ZLabs.csproj" />
         <entry key="ZLabs/MainWindow.axaml" value="ZLabs/ZLabs.csproj" />
@@ -14,6 +15,7 @@
         <entry key="ZLabs/Resources/Styles/MainWindow.axaml" value="ZLabs/ZLabs.csproj" />
         <entry key="ZLabs/Resources/Templates/Sensor.axaml" value="ZLabs/ZLabs.csproj" />
         <entry key="ZLabs/Test.axaml" value="ZLabs/ZLabs.csproj" />
+        <entry key="ZLabs/Views/About.axaml" value="ZLabs/ZLabs.csproj" />
         <entry key="ZLabs/Views/MainWindow.axaml" value="ZLabs/ZLabs.csproj" />
         <entry key="ZLabs/Views/SensorPlotSettings.axaml" value="ZLabs/ZLabs.csproj" />
         <entry key="ZLabs/Views/Sensors.axaml" value="ZLabs/ZLabs.csproj" />

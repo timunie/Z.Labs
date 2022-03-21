@@ -1,0 +1,68 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:ZLabs.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ZLabs.Views.About">
+    <Grid RowDefinitions="Auto,*">
+        <Grid Grid.Row="0" Margin="0 15 0 0" ColumnDefinitions="*,Auto">
+            <Label Grid.Column="0" Content="О программе" FontSize="30"
+                   FontFamily="{StaticResource MontserratBold}" VerticalAlignment="Center"
+                   Background="Transparent" VerticalContentAlignment="Center"
+                   Padding="70 0 0 0" />
+            <Image Grid.Column="0" Height="150" Width="173" Source="/Assets/Img/Info.png" VerticalAlignment="Top"
+                   HorizontalAlignment="Right" Margin="30 0" />
+        </Grid>
+        <Grid Grid.Row="1" Margin="35 100 35 0" RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto">
+
+            <Border Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="Black"
+                    BorderThickness="0 1 0 1" />
+            <Label Grid.Row="0" Grid.Column="0" Margin="0 10 0 10" Content="Текущая версия:"
+                   FontSize="16" FontFamily="{StaticResource MontserratRegular}" />
+            <Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"
+                   HorizontalAlignment="Center" Content="Z.Labs v1.0" FontSize="16"
+                   FontFamily="{StaticResource MontserratRegular}" />
+            <Button Grid.Row="0" Grid.Column="2" Content="Проверка обновлений" Height="35"
+                    Width="255" HorizontalAlignment="Right" FontSize="16"
+                    FontFamily="{StaticResource MontserratRegular}" />
+
+            <Border Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" BorderBrush="Black"
+                    BorderThickness="0 0 0 1" />
+            <Label Grid.Row="1" Grid.Column="0" Margin="0 10 0 10"
+                   Content="Руководство пользователя:" FontSize="16"
+                   FontFamily="{StaticResource MontserratRegular}" />
+            <Button Grid.Row="1" Grid.Column="2" Content="HTML руководство" Height="35"
+                    Width="255" HorizontalAlignment="Right" FontSize="16"
+                    FontFamily="{StaticResource MontserratRegular}"/>
+
+            <Border Grid.Row="2" Grid.ColumnSpan="3" BorderBrush="Black"
+                    BorderThickness="0 0 0 1" />
+            <Label Grid.Row="2" Grid.Column="0" Margin="0 10 0 10"
+                   Content="Техническая поддержка:" FontSize="16"
+                   FontFamily="{StaticResource MontserratRegular}" />
+            <Label Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"
+                   HorizontalAlignment="Center" Content="Телефон: 8(800)775-37-97"
+                   FontSize="16" FontFamily="{StaticResource MontserratRegular}" />
+            <Label Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"
+                   HorizontalAlignment="Right" FontSize="16"
+                   FontFamily="{StaticResource MontserratRegular}">
+                <controls:Hyperlink Url="https://www.zarnitza.ru">
+                    www.zarnitza.ru
+                </controls:Hyperlink>
+            </Label>
+
+            <Border Grid.Row="3" Grid.ColumnSpan="3" BorderBrush="Black"
+                    BorderThickness="0 0 0 1" />
+            <Label Grid.Row="3" Grid.Column="0" Margin="0 12 0 12" Content="Сайт:"
+                   FontSize="16" FontFamily="{StaticResource MontserratRegular}" />
+            <Label Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"
+                   HorizontalAlignment="Center" FontSize="16"
+                   FontFamily="{StaticResource MontserratRegular}">
+                <controls:Hyperlink Url="https://www.zarnitza.ru">
+                    www.zarnitza.ru
+                </controls:Hyperlink>
+            </Label>
+        </Grid>
+    </Grid>
+</UserControl>

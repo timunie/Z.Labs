@@ -1,12 +1,15 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using ZLabs.Models;
 
-namespace ZLabs.Controls;
+namespace ZLabs.Views;
 
-public partial class SimpleColorPicker : UserControl
+public partial class About : UserControl
 {
-    public SimpleColorPicker()
+    
+    
+    public About()
     {
         InitializeComponent();
     }

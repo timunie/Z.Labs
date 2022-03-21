@@ -13,15 +13,17 @@ namespace ZLabs.Models;
 
 public class Sensor : IPage
 {
-    // public readonly AvaPlot Plot = new AvaPlot();
 
-    // Отображаемое имя датчика
+    /// <summary> Отображаемое имя датчика </summary>
     public string Name { get; }
+
+    /// <summary> Путь до картинки в формате "/Assets/Path/To/Image.png" </summary>
+    public string ImagePath { get; } // 
     
-    // Путь до картинки в формате "/Assets/Path/To/Image.png"
-    public string ImagePath { get; }
-    // Набор настроек датчика и его графика
+    /// <summary> Набор настроек датчика и его графика </summary>
     public ObservableCollection<SensorSetting> Settings { get; set; } = new();
+
+    public Func<double, double>? Calibrator;
 
     // Таймер опроса датчика
     protected readonly DispatcherTimer _timer = new();
@@ -36,6 +38,25 @@ public class Sensor : IPage
         Name = name;
         ImagePath = imagePath;
         AddDefaultSettings();
+    }
+
+    public void Calibrate(Func<double, double>? calibrator)
+    {
+        Calibrator = calibrator;
+    }
+
+    private double GetCurrentValue()
+    {
+        var testValue = 30d + Random.Shared.NextDouble();
+        var result = testValue;
+
+        if (Calibrator != null)
+            result = Calibrator(result);
+
+        if (_plotRange != null)
+            result = _plotRange.Value.Convert(result);
+        
+        return result;
     }
 
     private static readonly Dictionary<string, int> Periods = new()
