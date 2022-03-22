@@ -114,4 +114,45 @@
     <Style Selector="Button.BlueButton:pressed">
         <Setter Property="Background" Value="LimeGreen"/>
     </Style>
+    
+    <!--Стиль для ToggleButton (датчик Подключен/Отключен)-->
+    <Style Selector="ToggleButton.SensorsConnect_Toggle">
+        <Setter Property="Background" Value="#696969"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Content" Value="-"/>
+        <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="19" Height="{TemplateBinding Height}">
+                        <ContentControl Content="{TemplateBinding Content}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Foreground="White" FontSize="20"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="ToggleButton.SensorsConnect_Toggle:checked">
+        <Setter Property="Background" Value="#3AB8FF"/>
+        <Setter Property="Content" Value="+"/>
+    </Style>
+    
+    <!--Стиль для Label в ListBox-->
+    <Style Selector="Label.Label_LB" >
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"/>
+    </Style>
+    
+    <!--Стиль для иконок(маленьких) в ListBox-->
+    <Style Selector="Image.Icon_img">
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Margin" Value="25 0 27 0"/>
+    </Style>
+    
 </Styles>

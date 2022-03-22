@@ -19,7 +19,8 @@ namespace ZLabs.Helpers;
 /// </summary>
 public class BitmapAssetValueConverter : IValueConverter
 {
-    public static BitmapAssetValueConverter Instance = new BitmapAssetValueConverter();
+    private static BitmapAssetValueConverter? _instance;
+    public static BitmapAssetValueConverter Instance => _instance ?? (_instance = new BitmapAssetValueConverter());
 
     public object? Convert(object? value, Type targetType, object parameter, CultureInfo culture)
     {
@@ -28,6 +29,15 @@ public class BitmapAssetValueConverter : IValueConverter
 
         if (value is not string rawUri || !targetType.IsAssignableFrom(typeof(Bitmap)))
             throw new NotSupportedException();
+
+
+        return Convert(rawUri);
+    }
+
+    public Bitmap? Convert(string? rawUri)
+    {
+        if (rawUri == null)
+            return null;
         
         Uri uri;
 
@@ -46,7 +56,6 @@ public class BitmapAssetValueConverter : IValueConverter
         var asset = assets.Open(uri);
 
         return new Bitmap(asset);
-
     }
 
     public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

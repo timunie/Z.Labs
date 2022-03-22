@@ -5,9 +5,11 @@ using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
+using Avalonia.Media.Imaging;
 using Avalonia.Threading;
 using AvaloniaColorPicker;
 using ScottPlot.Avalonia;
+using ZLabs.Helpers;
 
 namespace ZLabs.Models;
 
@@ -18,20 +20,27 @@ public class Sensor : IPage
     public string Name { get; }
 
     /// <summary> Путь до картинки в формате "/Assets/Path/To/Image.png" </summary>
-    public string ImagePath { get; } // 
+    public string ImagePath { get; }
+
+    public Bitmap? Image => BitmapAssetValueConverter.Instance.Convert(ImagePath);
     
     /// <summary> Набор настроек датчика и его графика </summary>
     public ObservableCollection<SensorSetting> Settings { get; set; } = new();
 
+    /// <summary> Фугкция применяющая настройки кабибровки. Если Null то игнорируется </summary>
     public Func<double, double>? Calibrator;
 
-    // Таймер опроса датчика
+    /// <summary> Находится ли датчик в связке датчиков </summary>
+    public bool InStack { get; set; } = false;
+
+    /// <summary> Таймер опроса датчика </summary>
     protected readonly DispatcherTimer _timer = new();
     protected int _markerSize = 2;
     protected Color _markerColor = Colors.Red;
     protected int _lineSize = 2;
     protected Color _lineColor = Colors.Red;
     protected PlotRange? _plotRange;
+    
 
     public Sensor(string name, string imagePath)
     {

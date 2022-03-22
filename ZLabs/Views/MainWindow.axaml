@@ -75,15 +75,10 @@
                 </ListBox>
 
                 <ListBox Grid.Row="4" SelectedItem="{Binding SelectedPage}" ItemTemplate="{StaticResource ListItemTemplate}" Margin="0 12 0 0"
-                         VirtualizationMode="None" Classes="Sidebar">
-                    <ListBox.Items>
-                        <!-- <models:SidebarElement Name="Связка датчиков" ImagePath="/Assets/Img/Pack.png" /> -->
-                        <!-- <models:SidebarElement Name="Калибровка" ImagePath="/Assets/Img/Calibr.png" /> -->
-                        <!-- <models:SidebarElement Name="Логирование" ImagePath="/Assets/Img/Logging.png" /> -->
-                        <!-- <models:SidebarElement Name="О программе" ImagePath="/Assets/Img/Info.png" /> -->
-                        <vm:AboutViewModel></vm:AboutViewModel>
-                    </ListBox.Items>
-
+                         VirtualizationMode="None" Classes="Sidebar" Items="{Binding SettingsPages}">
+                    <!-- <models:SidebarElement Name="Калибровка" ImagePath="/Assets/Img/Calibr.png" /> --> 
+                    <!-- <models:SidebarElement Name="Логирование" ImagePath="/Assets/Img/Logging.png" /> -->
+                    <!-- <models:SidebarElement Name="О программе" ImagePath="/Assets/Img/Info.png" /> -->
                 </ListBox>
                 <!--/Настройки -->
 
@@ -108,6 +103,9 @@
                         </DataTemplate>
                         <DataTemplate DataType="vm:SettingsViewModel">
                             <views:Settings />
+                        </DataTemplate>
+                        <DataTemplate DataType="vm:SensorsSetViewModel">
+                            <views:SensorsSet />
                         </DataTemplate>
                     </TabControl.DataTemplates>
                     <TabItem>

@@ -1,0 +1,48 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:ZLabs.Models"
+             xmlns:vm="clr-namespace:ZLabs.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="996" d:DesignHeight="720"
+             x:Class="ZLabs.Views.SensorsSet">
+    <Design.DesignStyle>
+        <StyleInclude Source="/Resources/Styles/MainWindow.axaml"></StyleInclude>
+    </Design.DesignStyle>
+    <Design.DataContext>
+        <vm:SensorsSetViewModel />
+    </Design.DataContext>
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        <Grid Grid.Row="0" Margin="0 15 0 0" ColumnDefinitions="*,Auto">
+            <Label Grid.Column="0" Content="Связка датчиков" FontSize="30"
+                   FontFamily="{StaticResource MontserratBold}" Background="Transparent"
+                   VerticalContentAlignment="Center" Padding="70 0 0 0" />
+            <Image Grid.Column="0" Height="150" Width="173" Source="/Assets/Img/Pack.png" VerticalAlignment="Top"
+                   HorizontalAlignment="Right" Margin="30 0" />
+        </Grid>
+        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0 0 0 2" Margin="30 0 30 5">
+            <Label Content="Выберите датчики для создания связки" FontSize="21"
+                   HorizontalAlignment="Center" FontFamily="{StaticResource MontserratRegular}"
+                   Margin="0 0 0 7" />
+        </Border>
+
+        <ItemsRepeater Grid.Row="2" Items="{Binding Sensors}">
+            <ItemsRepeater.Layout>
+                <UniformGridLayout Orientation="Vertical"  MinColumnSpacing="5" MinItemWidth="450"></UniformGridLayout>
+            </ItemsRepeater.Layout >
+            <ItemsRepeater.ItemTemplate>
+                <DataTemplate DataType="models:Sensor">
+                    <DockPanel Margin="0 0 20 0" LastChildFill="True">
+                        <Image DockPanel.Dock="Left" Source="{Binding Image}"
+                               Classes="Icon_img" />
+                        <ToggleButton DockPanel.Dock="Right" Classes="SensorsConnect_Toggle"
+                                      IsChecked="{Binding InStack}" />
+                        <Label Content="{Binding Name}" Classes="Label_LB" Margin="0 0 10 0"/>
+                    </DockPanel>
+                   
+                </DataTemplate>
+
+            </ItemsRepeater.ItemTemplate>
+        </ItemsRepeater>
+    </Grid>
+</UserControl>

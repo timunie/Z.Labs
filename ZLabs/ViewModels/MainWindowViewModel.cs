@@ -19,7 +19,9 @@ namespace ZLabs.ViewModels
     {
         private IPage? _selectedPage;
 
-        public ObservableCollection<SensorViewModel> Sensors { get; }
+        public ObservableCollection<IPage> SettingsPages { get; }
+            
+        public ObservableCollection<IPage> Sensors { get; }
 
         public IPage? SelectedPage
         {
@@ -37,9 +39,16 @@ namespace ZLabs.ViewModels
             var sensors = 
                 Enum.GetValues(typeof(SensorType))
                 .Cast<SensorType>()
-                .Select(type => new SensorViewModel(SensorFabric.GetSensor(type)));
+                .Select(type => SensorFabric.GetSensor(type))
+                .ToArray();
             
-            Sensors = new ObservableCollection<SensorViewModel>(sensors);
+            Sensors = new ObservableCollection<IPage>(sensors.Select(sensor => new SensorViewModel(sensor)));
+            var pages = new IPage[]
+            {
+                new SensorsSetViewModel(sensors),
+                new AboutViewModel()
+            };
+            SettingsPages = new ObservableCollection<IPage>(pages);
         }
     }
 }
