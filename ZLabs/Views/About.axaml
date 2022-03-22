@@ -5,8 +5,11 @@
              xmlns:controls="clr-namespace:ZLabs.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ZLabs.Views.About">
+    <UserControl.Styles>
+        <StyleInclude Source="/Resources/Styles/MainWindow.axaml"></StyleInclude>
+    </UserControl.Styles>
     <Grid RowDefinitions="Auto,*">
-        <Grid Grid.Row="0" Margin="0 15 0 0" ColumnDefinitions="*,Auto">
+        <Grid Grid.Row="0" Margin="0 15 0 0" ColumnDefinitions="*,Auto" >
             <Label Grid.Column="0" Content="О программе" FontSize="30"
                    FontFamily="{StaticResource MontserratBold}" VerticalAlignment="Center"
                    Background="Transparent" VerticalContentAlignment="Center"
@@ -23,7 +26,7 @@
             <Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"
                    HorizontalAlignment="Center" Content="Z.Labs v1.0" FontSize="16"
                    FontFamily="{StaticResource MontserratRegular}" />
-            <Button Grid.Row="0" Grid.Column="2" Content="Проверка обновлений" Height="35"
+            <Button Grid.Row="0" Grid.Column="2" Content="Проверка обновлений" Height="35" Classes="BlueButton"
                     Width="255" HorizontalAlignment="Right" FontSize="16"
                     FontFamily="{StaticResource MontserratRegular}" />
 
@@ -32,11 +35,13 @@
             <Label Grid.Row="1" Grid.Column="0" Margin="0 10 0 10"
                    Content="Руководство пользователя:" FontSize="16"
                    FontFamily="{StaticResource MontserratRegular}" />
-            <Button Grid.Row="1" Grid.Column="2" Content="HTML руководство" Height="35"
-                    Width="255" HorizontalAlignment="Right" FontSize="16"
-                    FontFamily="{StaticResource MontserratRegular}"/>
+            <controls:Hyperlink Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Url="https://www.zarnitza.ru" >
+                <Button Content="HTML руководство"  Height="35" Classes="BlueButton"
+                        Width="255" HorizontalAlignment="Right" FontSize="16" FontFamily="{StaticResource MontserratRegular}" />
+            </controls:Hyperlink>
 
-            <Border Grid.Row="2" Grid.ColumnSpan="3" BorderBrush="Black"
+
+            <Border Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="0" BorderBrush="Black"
                     BorderThickness="0 0 0 1" />
             <Label Grid.Row="2" Grid.Column="0" Margin="0 10 0 10"
                    Content="Техническая поддержка:" FontSize="16"
@@ -52,7 +57,7 @@
                 </controls:Hyperlink>
             </Label>
 
-            <Border Grid.Row="3" Grid.ColumnSpan="3" BorderBrush="Black"
+            <Border Grid.Row="3" Grid.ColumnSpan="3" Grid.Column="0" BorderBrush="Black"
                     BorderThickness="0 0 0 1" />
             <Label Grid.Row="3" Grid.Column="0" Margin="0 12 0 12" Content="Сайт:"
                    FontSize="16" FontFamily="{StaticResource MontserratRegular}" />

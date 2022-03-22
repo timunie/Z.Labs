@@ -8,7 +8,7 @@
              d:DataContext="{x:Static vm:SensorViewModel.SampleViewModel}"
              x:Class="ZLabs.Views.SensorPlotSettings">
 
-    <Grid RowDefinitions="Auto,Auto,Auto,*,Auto">
+    <Grid RowDefinitions="Auto,Auto,Auto,*">
         <Grid Grid.Row="0" Margin="0 15 0 0" ColumnDefinitions="*,Auto">
             <Label Grid.Column="0" Content="{Binding Name}" FontSize="30"
                    FontFamily="{StaticResource MontserratBold}" Background="Transparent"
@@ -50,8 +50,5 @@
                 </ItemsRepeater.ItemTemplate>
             </ItemsRepeater>
         </Grid>
-        <Button HorizontalAlignment="Center" Grid.Row="4" Height="40" Width="180"
-                Content="Пуск" FontSize="20"
-                Margin="0 0 0 10" />
     </Grid>
 </UserControl>

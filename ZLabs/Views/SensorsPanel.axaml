@@ -44,7 +44,7 @@
         <Label Grid.Row="1" Grid.Column="1" Content="Доступные устройства:" VerticalAlignment="Center"
                Classes="SensorsScanHeader" />
 
-        <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Content="Обновить" />
+        <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Content="Обновить" Classes="BlueButton" />
 
         <!-- Поиск датчиков -->
         <TabControl Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" SelectedIndex="1" Background="Transparent"
@@ -70,7 +70,7 @@
                                                    VerticalAlignment="Center"
                                                    FontFamily="{StaticResource MontserratRegular}"
                                                    FontSize="16" Text="{Binding rssi}" />
-                                        <Button Margin="52,0,0,0" Name="ConnectBLEBut"
+                                        <Button Margin="52,0,0,0" Name="ConnectBLEBut" Classes="BlueButton"
                                                 Height="40" Width="180" Content="Подключиться" />
                                     </StackPanel>
                                 </DataTemplate>

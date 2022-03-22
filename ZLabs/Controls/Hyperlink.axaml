@@ -1,22 +1,37 @@
-﻿<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="ZLabs.Controls.Hyperlink">
-    <UserControl.Styles>
-        <Style Selector="UserControl">
-            <Setter Property="Template">
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:ZLabs.Controls">
+    <Design.PreviewWith>
+        <controls:Hyperlink Url="" >
+            Test
+        </controls:Hyperlink>
+    </Design.PreviewWith>
+    <StyleInclude Source="/Resources/Styles/MainWindow.axaml"></StyleInclude>
 
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Border  Background="Black" >
-                            <ContentControl Content="{TemplateBinding Content}" Foreground="White" FontSize="20" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </UserControl.Styles>
-   
-</UserControl>
+    <Style Selector="controls|Hyperlink">
+        <!-- Set Defaults -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Button Name="LinkButton" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                    <!-- <TextBlock Text="{Binding Content}"/> -->
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <ContentPresenter Content="{TemplateBinding Content}"></ContentPresenter>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <ContentPresenter Content="{TemplateBinding Content}"></ContentPresenter>
+                </Button>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="controls|Hyperlink Button">
+        <Setter Property="Foreground" Value="#2974cc" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    <Style Selector="controls|Hyperlink Button:pointerover">
+        <Setter Property="Foreground" Value="#00BFFF" />
+    </Style>
+    <Style Selector="controls|Hyperlink Button:pressed">
+        <Setter Property="Foreground" Value="LimeGreen" />
+    </Style>
+</Styles>

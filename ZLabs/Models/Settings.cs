@@ -7,6 +7,7 @@ public static class Settings
 {
     public static double ExperimentTime { get; set; } = 1;
     public static TimeUnit TimeUnit { get; set; } = TimeUnit.TimeUnits[0];
+    
     public static TimeFormat TimeFormat { get; set; } = TimeFormat.Stopwatch;
     public static ChartFormat ChartFormat { get; set; } = ChartFormat.Dots | ChartFormat.Line;
 }

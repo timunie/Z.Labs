@@ -1,39 +1,46 @@
-﻿using System;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
-using System.Reactive;
-using System.Windows.Input;
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
-using ReactiveUI;
+using Avalonia.Controls.Primitives;
+using Avalonia.Metadata;
+using ZLabs.Helpers;
 
 namespace ZLabs.Controls;
 
-public partial class Hyperlink : UserControl
+public class Hyperlink : TemplatedControl
 {
-    public static readonly AvaloniaProperty<string> UrlProperty = AvaloniaProperty.Register<Hyperlink, string>(nameof(Url));
+    [Required]
+    public static readonly StyledProperty<string> UrlProperty = AvaloniaProperty.Register<Hyperlink, string>("Url");
+    public static readonly StyledProperty<object> ContentProperty = AvaloniaProperty.Register<Hyperlink, object>("Content");
 
     public string Url
     {
-        get => (string)GetValue(UrlProperty);
-        set => SetValue(UrlProperty, value);
-    }
-    
-
-    
-    public Hyperlink()
-    {
-        InitializeComponent();
+        get { return (string) GetValue(UrlProperty); }
+        set { SetValue(UrlProperty, value); }
     }
 
-    private void InitializeComponent()
+    [Content]
+    public object Content
     {
-        AvaloniaXamlLoader.Load(this);
+        get { return (object) GetValue(ContentProperty); }
+        set { SetValue(ContentProperty, value); }
     }
 
-    private void Button_OnClick(object? sender, RoutedEventArgs e)
+    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
-        Process.Start(Url);
+        base.OnApplyTemplate(e);
+        var linkButton = e.NameScope.Find<Button>("LinkButton");
+        linkButton.Click += (sender, args) =>
+        {
+            try
+            {
+                SystemBasedExtensions.OpenBrowser(Url);
+            }
+            catch (System.Exception other)
+            {
+                MessageBoxExtensions.Show(other.Message);
+            }
+        };
     }
 }

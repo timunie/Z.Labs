@@ -94,7 +94,7 @@
     
     
      <!--Cтиль для Button (синие кнопки)-->
-    <Style Selector="Button">
+    <Style Selector="Button.BlueButton">
         <Setter Property="Background" Value="#3AB8FF"/>
         <Setter Property="Height" Value="40"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -111,7 +111,7 @@
         </Setter>
     </Style>
     
-    <Style Selector="Button:pressed">
+    <Style Selector="Button.BlueButton:pressed">
         <Setter Property="Background" Value="LimeGreen"/>
     </Style>
 </Styles>
